@@ -39,13 +39,13 @@
       <ng-container matColumnDef="price">
         <mat-header-cell *matHeaderCellDef
                          mat-sort-header> Precio </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.price | currency}} </mat-cell>
+        <mat-cell *matCellDef="let product"> {{product.price | currency:'EUR':'symbol'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="available">
         <mat-header-cell *matHeaderCellDef
                          mat-sort-header> Disponible </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.available}} </mat-cell>
+        <mat-cell *matCellDef="let product"> {{product.available  | date:'dd/MM/y'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="rating">
