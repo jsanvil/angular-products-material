@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>{{ title.getTitle() }}</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if(products && products.length) {
+    <mat-form-field>
+      <mat-label>
+        <mat-icon aria-hidden="false"
+                  fontIcon="search"></mat-icon>
+        Buscar
+      </mat-label>
+      <input matInput
+             (keyup)="applyFilter($event)"
+             placeholder="buscar..."
+             #input>
+    </mat-form-field>
+
+    <table mat-table
+           [dataSource]="products | productFilter:filterSearch"
+           matSort
+           class="mat-elevation-z8">
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef>Imagen</mat-header-cell>
+        <mat-cell *matCellDef="let product"> <img [src]="product.imageUrl"
+               alt="product.detail"
+               width="50"
+               height="50"></mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef
+                         mat-sort-header> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let product"> {{product.description}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef
+                         mat-sort-header> Precio </mat-header-cell>
+        <mat-cell *matCellDef="let product"> {{product.price | currency}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="available">
+        <mat-header-cell *matHeaderCellDef
+                         mat-sort-header> Disponible </mat-header-cell>
+        <mat-cell *matCellDef="let product"> {{product.available}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="rating">
+        <mat-header-cell *matHeaderCellDef
+                         mat-sort-header> Valoración </mat-header-cell>
+        <mat-cell *matCellDef="let product"> {{product.rating}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row matRipple
+               *matRowDef="let row; columns: displayedColumns;"
+               (click)="selectedProduct(row)"></mat-row>
+    </table>
+
+    }
+    @else {
+    <div class="alert alert-info">
+      No hay productos
+    </div>
+    }
+
+  </mat-card-content>
+  <mat-card-actions class="justify-content-end">
+    <button mat-raised-button
+            color="primary"
+            [routerLink]="['/product/add']">
+      <mat-icon aria-hidden="false"
+                fontIcon="add"></mat-icon>
+      Añadir producto
+    </button>
+  </mat-card-actions>
+</mat-card>

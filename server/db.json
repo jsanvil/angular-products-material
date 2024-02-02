@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "description": "WD BLACK SN770 2TB NVMe SSD",
+      "price": 115,
+      "available": "2023-10-03T00:00:00.000Z",
+      "imageUrl": "http://placehold.it/200x100",
+      "rating": 3
+    }
+  ]
+}

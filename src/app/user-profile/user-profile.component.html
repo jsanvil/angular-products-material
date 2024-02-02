@@ -1,0 +1,29 @@
+@if (username) {
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Perfil de usuario</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h3>👋 Hola <strong>{{ username }}</strong></h3>
+    <p>Welcome back!</p>
+  </mat-card-content>
+  <mat-card-actions class="justify-content-end">
+    <button mat-raised-button
+            color="primary"
+            (click)="logout($event)">
+            <mat-icon aria-hidden="false"
+            fontIcon="logout"></mat-icon>
+      Cerrar sesión
+    </button>
+  </mat-card-actions>
+</mat-card>
+} @else {
+  <mat-card>
+  <mat-card-content>
+    <mat-spinner></mat-spinner>
+    <span class="visually-hidden">Cargando...</span>
+  </mat-card-content>
+</mat-card>
+}

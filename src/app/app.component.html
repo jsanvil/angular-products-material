@@ -1,0 +1,66 @@
+<mat-toolbar class="dark">
+  <!-- TITLE -->
+  <button mat-button
+          extended
+          aria-labelledby="Inicio"
+          routerLink="/welcome">
+    <mat-icon aria-hidden="false"
+              fontIcon="sell"></mat-icon>
+    <span>
+      {{title}}
+    </span>
+  </button>
+  <span class="spacer"></span>
+  <!-- HOME -->
+  <button mat-button
+          extended
+          aria-labelledby="Inicio"
+          routerLink="/welcome"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page">
+    <mat-icon aria-hidden="false"
+              fontIcon="home"></mat-icon>
+    Inicio
+  </button>
+  <!-- PRODUCTS -->
+  <button mat-button
+          extended
+          aria-labelledby="Productos"
+          routerLink="/products"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon aria-hidden="false"
+              fontIcon="list"></mat-icon>
+    Productos
+  </button>
+  <!-- USER PROFILE -->
+  @if(user) {
+  <button mat-button
+          extended
+          aria-labelledby="Perfil de usuario"
+          routerLink="/user/profile"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page">
+    <mat-icon aria-hidden="false"
+              fontIcon="person-circle"></mat-icon>
+    {{user || 'Perfil de usuario'}}
+  </button>
+  } @else {
+  <!-- LOGIN -->
+  <button mat-button
+          extended
+          aria-labelledby="Inicio de sesión"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          routerLink="/user/login">
+    <mat-icon aria-hidden="false"
+              fontIcon="login"></mat-icon>
+    Login
+  </button>
+  }
+</mat-toolbar>
+
+<div class="container p-3">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,64 @@
+<mat-card class="col-8 mx-auto">
+       <!-- LOGIN FORM -->
+       <mat-card-header>
+              <mat-card-title>
+                     <h1>Inicio de sesión</h1>
+              </mat-card-title>
+       </mat-card-header>
+       <mat-card-content>
+              <p>Introduzca sus credenciales de acceso</p>
+              <form [formGroup]="loginForm"
+                    (ngSubmit)="login()"
+                    novalidate>
+
+                     <!-- USERNAME -->
+                     <div class="mb-3">
+                            <mat-form-field class="w-100">
+                                   <mat-icon matPrefix
+                                             fontIcon="account_circle"></mat-icon>
+                                   <mat-label>Usuario</mat-label>
+                                   <input matInput
+                                          type="text"
+                                          name="userName"
+                                          formControlName="userName"
+                                          #userNameInput
+                                          aria-describedby="userNameHelp"
+                                          [errorStateMatcher]="matcher">
+                                   <mat-hint>Introduce un nombre de usuario</mat-hint>
+                                   @if (userName?.errors?.['required']) {
+                                   <mat-error>El <strong>nombre de usuario</strong> es necesario</mat-error>
+                                   }
+                            </mat-form-field>
+                     </div>
+                     <!-- PASSWORD -->
+                     <div class="mb-3">
+                            <mat-form-field class="w-100">
+                                   <mat-icon matPrefix
+                                             fontIcon="key"></mat-icon>
+                                   <mat-label>Contraseña</mat-label>
+                                   <input matInput
+                                          type="password"
+                                          name="userPassword"
+                                          id="userPassword"
+                                          formControlName="userPassword"
+                                          #userPasswordInput
+                                          aria-describedby="userPasswordHelp"
+                                          [errorStateMatcher]="matcher">
+                                   @if (userPassword?.errors?.['required']) {
+                                   <mat-error>Se requiere <strong>contraseña</strong></mat-error>
+                                   }
+                            </mat-form-field>
+                     </div>
+
+                     <div class="text-end">
+                            <button mat-raised-button
+                                    color="primary"
+                                    [disabled]="!loginForm.valid"
+                                    type="submit">
+                                   <mat-icon aria-hidden="false"
+                                             fontIcon="login"></mat-icon>
+                                   Entrar</button>
+                     </div>
+              </form>
+       </mat-card-content>
+</mat-card>

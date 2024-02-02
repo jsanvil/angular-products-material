@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Bienvenido a AngularProducts</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Aplicación <em>Angular</em> con los ejemplos de los apuntes del módulo.</p>
+    <p>DAW - Desarrollo Web en Entorno Cliente</p>
+    <p>Curso 2023-2024</p>
+    <p>IES Serpis</p>
+  </mat-card-content>
+  <mat-card-actions class="justify-content-end">
+    <button mat-button
+            color="primary"
+            [routerLink]="['/products']">
+      <mat-icon aria-hidden="false"
+                fontIcon="list"></mat-icon>
+      Productos
+    </button>
+    @if(user) {
+    <button mat-button
+            color="primary"
+            [routerLink]="['/user/profile']">
+      <i class="bi bi-person-circle"></i>
+      Perfil de usuario
+    </button>
+    } @else {
+    <button mat-button
+            color="primary"
+            [routerLink]="['/user/login']">
+      <i class="bi bi-box-arrow-in-right"></i>
+      Login
+    </button>
+    }
+  </mat-card-actions>
+</mat-card>

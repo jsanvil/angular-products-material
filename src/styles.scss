@@ -1,0 +1,56 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@include mat.core();
+
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+
+$dark-theme: mat.define-dark-theme((
+    color: (primary: mat.define-palette(mat.$pink-palette), accent: mat.define-palette(mat.$blue-grey-palette)),
+    density: -2,
+    typography: mat.define-typography-config()
+));
+$light-theme: mat.define-light-theme((
+    color: (primary: mat.define-palette(mat.$purple-palette), accent: mat.define-palette(mat.$blue-grey-palette))
+));
+
+@include mat.all-component-themes($light-theme);
+.dark {
+  @include mat.all-component-colors($dark-theme);
+}
+
+// // Define a dark theme
+// $dark-theme: mat.define-dark-theme((
+//  color: (
+//    primary: mat.define-palette(mat.$pink-palette),
+//    accent: mat.define-palette(mat.$blue-grey-palette),
+//  ),
+//   // Only include `typography` and `density` in the default dark theme.
+//   typography: mat.define-typography-config(),
+//   density: 0,
+// ));
+
+// // Define a light theme
+// $light-theme: mat.define-light-theme((
+//  color: (
+//    primary: mat.define-palette(mat.$indigo-palette),
+//    accent: mat.define-palette(mat.$pink-palette),
+//  ),
+// ));
+
+// // Apply the light theme by default
+// @include mat.core-theme($light-theme);
+// @include mat.button-theme($light-theme);
+
+// // Apply the light theme only when the user prefers light themes.
+// @media (prefers-color-scheme: dark) {
+//  // Use the `-color` mixins to only apply color styles without reapplying the same
+//  // typography and density styles.
+//  @include mat.core-color($dark-theme);
+//  @include mat.button-color($dark-theme);
+// }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
