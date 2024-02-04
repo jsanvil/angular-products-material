@@ -16,6 +16,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatRippleModule } from '@angular/material/core';
 import { Router, RouterLink } from '@angular/router';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { LoginService } from '../../services/login.service';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-products-list',
@@ -36,7 +38,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     MatButtonModule,
     MatIconModule,
     MatRippleModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule
   ],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss'
@@ -51,11 +54,16 @@ export class ProductsListComponent implements AfterViewInit {
   protected showImage = true;
   protected filterSearch = '';
   protected products: IProduct[] = [];
+  isAdmin: boolean;
 
   constructor(
     private router: Router,
     private productService: ProductService,
-    protected title: Title) { }
+    private loginService: LoginService,
+    protected title: Title
+  ) {
+    this.isAdmin = this.loginService.isAdmin();
+  }
 
   ngAfterViewInit() {
     this.productService.getProducts().subscribe({

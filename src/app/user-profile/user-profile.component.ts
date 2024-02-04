@@ -28,7 +28,6 @@ export class UserProfileComponent {
 
   ngOnInit() {
     if (!this.loginService.isLogged()) {
-      console.log('User is not logged in');
       this.router.navigate(['/user/login']);
     }
 

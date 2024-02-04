@@ -7,7 +7,7 @@
       @if(product) {
       <form #productForm="ngForm"
             novalidate
-            (ngSubmit)="saveChanges()">
+            (ngSubmit)="saveChanges(productForm)">
         <div class="mb-3 row">
           <label for="description"
                  class="col-md-2 col-form-label text-md-end">Descripción</label>
@@ -52,7 +52,6 @@
                    name="available"
                    id="available"
                    [(ngModel)]="product.available"
-                   required
                    minDate="2023-01-01T00:00"
                    #availModel="ngModel"
                    [ngClass]="validClasses(availModel, 'is-valid', 'is-invalid')">

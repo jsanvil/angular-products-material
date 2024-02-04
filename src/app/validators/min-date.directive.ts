@@ -12,7 +12,6 @@ import { Validator, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@an
 export class MinDateDirective implements Validator {
   @Input() minDate!: string;
   validate(control: AbstractControl): ValidationErrors | null {
-    console.log('minDate', this.minDate);
     if (this.minDate && control.value && this.minDate > control.value) {
       return { minDate: true }; // Error returned
     }

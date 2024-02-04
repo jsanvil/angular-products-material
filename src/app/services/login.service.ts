@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IUser } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ import { Observable } from 'rxjs';
 export class LoginService {
   constructor() { }
 
-  public login(user?: string, password?: string): Observable<boolean> {
+  public login(user?: string, password?: string): Observable<IUser> {
     // Simulate a server request
-    return new Observable<boolean>(observer => {
+    return new Observable<IUser>(observer => {
       if (!user || !password) {
         observer.error('User and password are required');
         return;
@@ -18,7 +19,7 @@ export class LoginService {
       const isUser = user === 'user' && password === 'user';
       if (isAdmin || isUser) {
         localStorage.setItem('username', user);
-        observer.next(true);
+        observer.next({ username: user, password: password, email: '', role: isAdmin ? 'admin' : 'user' });
         observer.complete();
       }
       else {
@@ -37,5 +38,9 @@ export class LoginService {
 
   public getUserLogged(): string {
     return localStorage.getItem('username') || '';
+  }
+
+  public isAdmin(): boolean {
+    return this.getUserLogged() === 'admin';
   }
 }

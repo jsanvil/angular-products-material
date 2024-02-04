@@ -67,7 +67,6 @@ export class UserLoginComponent {
         }
       },
       error: err => console.error(err),
-      complete: () => console.log('Login completed')
     });
   }
 

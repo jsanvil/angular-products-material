@@ -21,3 +21,48 @@
 th .mat-icon {
   font-size: medium;
 }
+
+.product-card {
+  width: 100%;
+  height: 200px;
+  margin: 10px;
+  overflow: hidden;
+  background-color: #888;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .product-description {
+    font-size: 1em;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #00000099;
+    color: white;
+    padding: 5px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 200px;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .product-price-tag {
+    top: 0;
+    right: 0;
+    position: absolute;
+    background-color: #00000099;
+    color: white;
+    padding: 5px;
+    border-bottom-left-radius: 5px;
+    z-index: 2;
+  }
+}

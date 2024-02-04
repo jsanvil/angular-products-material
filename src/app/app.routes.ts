@@ -10,6 +10,7 @@ import { loggedUserGuard } from './guards/logged-user.guard';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { anonymousUserGuard } from './guards/anonymous-user.guard';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   // BIENVENIDA
@@ -29,7 +30,7 @@ export const routes: Routes = [
   // AÑADIR NUEVO PRODUCTO
   {
     path: 'products/add',
-    canActivate: [loggedUserGuard],
+    canActivate: [loggedUserGuard, adminGuard],
     canDeactivate: [leavePageGuard],
     component: ProductAddComponent,
     title: 'Añadir nuevo producto',
@@ -48,7 +49,7 @@ export const routes: Routes = [
   // EDITAR PRODUCTO
   {
     path: 'products/edit/:id',
-    canActivate: [loggedUserGuard],
+    canActivate: [loggedUserGuard, adminGuard],
     canDeactivate: [leavePageGuard],
     resolve: {
       product: productResolver

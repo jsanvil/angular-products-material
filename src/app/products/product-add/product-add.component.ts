@@ -31,8 +31,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   styleUrl: './product-add.component.scss'
 })
 export class ProductAddComponent implements ComponentDeactivate {
-  // @ViewChild('productForm', {static: true}) productForm?: NgModel;
-
   productForm = new FormGroup({
     description: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
@@ -65,11 +63,6 @@ export class ProductAddComponent implements ComponentDeactivate {
     private productService: ProductService
   ) { }
 
-  ngOnInit() {
-    // this.product = this.route.snapshot.data['product'];
-    // this.product!.available = this.product!.available.replace('.000Z', '');
-  }
-
   canDeactivate() {
     return confirm('¿Quiere abandonar la página?. Los cambios no se guardarán.');
   }
@@ -99,12 +92,8 @@ export class ProductAddComponent implements ComponentDeactivate {
   }
 
   changeImage(fileInput: HTMLInputElement) {
-    console.log('changeImage');
     if (!this.product) { return; }
     if (!fileInput.files || fileInput.files.length === 0) return;
-
-    console.log('changeImage', fileInput.files[0]);
-
     const reader: FileReader = new FileReader();
     reader.readAsDataURL(fileInput.files[0]);
     reader.addEventListener('loadend', e => {

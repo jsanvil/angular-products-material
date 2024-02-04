@@ -1,8 +1,8 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IProduct } from '../../interfaces/product';
+import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/product.service';
 import { ComponentDeactivate } from '../../guards/leave-page.guard';
 import { MinDateDirective } from '../../validators/min-date.directive';
@@ -15,9 +15,7 @@ import { MinDateDirective } from '../../validators/min-date.directive';
   styleUrl: './product-edit.component.css'
 })
 export class ProductEditComponent implements ComponentDeactivate {
-  @ViewChild('productForm', {static: true}) productForm?: NgModel;
-
-  product?: IProduct;
+  product?: Product;
   productImage: string = '';
 
   constructor(
@@ -35,16 +33,16 @@ export class ProductEditComponent implements ComponentDeactivate {
     return confirm('¿Quiere abandonar la página?. Los cambios no se guardarán.');
   }
 
-  saveChanges() {
-    // if (this.product && this.productForm!.valid) {
-      this.productService.updateProduct(this.product!).subscribe({
+  saveChanges(productForm: NgForm) {
+    if (this.product && productForm.valid) {
+      this.productService.updateProduct(this.product).subscribe({
         next: prod => {
           this.product = prod;
           this.router.navigate(['/products', this.product.id]);
         },
         error: err => console.error(err)
       });
-    // }
+    }
   }
 
   validClasses(ngModel: NgModel, validClass: string, errorClass: string) {
