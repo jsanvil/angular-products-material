@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import { LoginService } from '../services/login.service';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-welcome',
@@ -14,10 +15,11 @@ import { LoginService } from '../services/login.service';
     RouterLink,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule
   ],
   templateUrl: './welcome.component.html',
-  styleUrl: './welcome.component.css'
+  styleUrl: './welcome.component.scss'
 })
 export class WelcomeComponent {
   user = '';

@@ -1,0 +1,75 @@
+<!-- <mat-toolbar class="dark"> -->
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  @if(isMobile) {
+  <button mat-raised-button color="accent"
+  
+
+          (click)="toggleSideNav()"><mat-icon>menu</mat-icon></button>
+  }
+  <!-- TITLE -->
+  <button mat-button
+          extended
+          aria-labelledby="Inicio"
+          routerLink="/welcome">
+    <mat-icon aria-hidden="false"
+              fontIcon="sell"></mat-icon>
+    <span>
+      {{title}}
+    </span>
+  </button>
+  <span class="spacer"></span>
+  @if(!isMobile) {
+  <!-- HOME -->
+  <button mat-button
+          extended
+          aria-labelledby="Inicio"
+          routerLink="/welcome"
+          routerLinkActive="mat-elevation-z8 active"
+          ariaCurrentWhenActive="page">
+    <mat-icon aria-hidden="false"
+              fontIcon="home"></mat-icon>
+    Inicio
+  </button>
+  <!-- PRODUCTS -->
+  <button mat-button
+          extended
+          aria-labelledby="Productos"
+          routerLink="/products"
+          routerLinkActive="mat-elevation-z8 active"
+          ariaCurrentWhenActive="page"
+          [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon aria-hidden="false"
+              fontIcon="list"></mat-icon>
+    Productos
+  </button>
+  }
+  <!-- USER PROFILE -->
+  @if(user) {
+  <button mat-button
+          extended
+          aria-labelledby="Perfil de usuario"
+          routerLink="/user/profile"
+          routerLinkActive="mat-elevation-z8 active"
+          ariaCurrentWhenActive="page">
+    <mat-icon aria-hidden="false"
+              fontIcon="person-circle"></mat-icon>
+    {{!isMobile ? user || 'Perfil de usuario' : ''}}
+  </button>
+  } @else {
+  <!-- LOGIN -->
+  <button mat-button
+          extended
+          aria-labelledby="Inicio de sesión"
+          routerLinkActive="mat-elevation-z8 active"
+          ariaCurrentWhenActive="page"
+          routerLink="/user/login">
+    <mat-icon aria-hidden="false"
+              fontIcon="login"></mat-icon>
+    {{ !isMobile ? 'Login' : ''}}
+  </button>
+  }
+  <button mat-icon-button
+          (click)="toggleTheme()">
+    <mat-icon>{{ isDarkMode ? 'wb_sunny' : 'nights_stay' }}</mat-icon>
+  </button>
+</mat-toolbar>

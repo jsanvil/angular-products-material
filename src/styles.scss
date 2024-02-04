@@ -1,25 +1,37 @@
-@use '@angular/material' as mat;
-@use 'sass:map';
+// @use "@angular/material" as mat;
+// @use "sass:map";
 
-@include mat.core();
+// @include mat.core();
 
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
 
-$dark-theme: mat.define-dark-theme((
-    color: (primary: mat.define-palette(mat.$pink-palette), accent: mat.define-palette(mat.$blue-grey-palette)),
-    density: -2,
-    typography: mat.define-typography-config()
-));
-$light-theme: mat.define-light-theme((
-    color: (primary: mat.define-palette(mat.$purple-palette), accent: mat.define-palette(mat.$blue-grey-palette))
-));
+// $dark-theme: mat.define-dark-theme(
+//   (
+//     color: (
+//       primary: mat.define-palette(mat.$pink-palette),
+//       accent: mat.define-palette(mat.$blue-grey-palette),
+//     ),
+//     density: -2,
+//     typography: mat.define-typography-config(),
+//   )
+// );
+// $light-theme: mat.define-light-theme(
+//   (
+//     color: (
+//       primary: mat.define-palette(mat.$purple-palette),
+//       accent: mat.define-palette(mat.$blue-grey-palette),
+//     ),
+//   )
+// );
 
-@include mat.all-component-themes($light-theme);
-.dark {
-  @include mat.all-component-colors($dark-theme);
-}
+// @include mat.all-component-themes($light-theme);
+// .dark {
+//   @include mat.all-component-colors($dark-theme);
+// }
+
+// -----
 
 // // Define a dark theme
 // $dark-theme: mat.define-dark-theme((
@@ -52,5 +64,11 @@ $light-theme: mat.define-light-theme((
 //  @include mat.button-color($dark-theme);
 // }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

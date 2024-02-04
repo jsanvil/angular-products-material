@@ -1,0 +1,95 @@
+<div class="product-list-container container p-3 mx-auto mb-5">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>
+        <h4>Productos</h4>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="w-100">
+        <mat-icon matPrefix
+                  fontIcon="search"></mat-icon>
+        <mat-label>Buscar</mat-label>
+        <input matInput
+               (keyup)="applyFilter($event)"
+               #input>
+      </mat-form-field>
+      <div class="table-container">
+        <table mat-table
+               [dataSource]="dataSource!"
+               matSort>
+          <ng-container matColumnDef="image">
+            <th mat-header-cell
+                *matHeaderCellDef> Imagen </th>
+            <td mat-cell
+                *matCellDef="let product">
+              @if(product.imageUrl) {
+              <img [src]="product.imageUrl"
+                   alt="product.description"
+                   class="img-thumbnail"
+                   width="50">
+              }
+              @else {
+              <mat-icon fontIcon="image"></mat-icon>
+              }
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <th mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header> Descripción </th>
+            <td mat-cell
+                *matCellDef="let product"> {{product.description}} </td>
+          </ng-container>
+          <ng-container matColumnDef="price">
+            <th mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header> Precio </th>
+            <td mat-cell
+                *matCellDef="let product"> {{product.price | currency:'EUR':'symbol'}} </td>
+          </ng-container>
+          <ng-container matColumnDef="available">
+            <th mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header> Disponible </th>
+            <td mat-cell
+                *matCellDef="let product">
+              {{product.available | date: 'dd/MM/yyyy'}}
+              @if(!product.available) {
+              <mat-icon fontIcon="cancel_outlined"></mat-icon>
+              }
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="rating">
+            <th mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header><mat-icon fontIcon="star_outlined"></mat-icon></th>
+            <td mat-cell
+                *matCellDef="let product"> {{product.rating > 0 ? product.rating : '-' }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell
+                *matHeaderCellDef> Acciones </th>
+            <td mat-cell
+                *matCellDef="let product">
+              <button mat-icon-button
+                      [routerLink]="['/products', product.id]">
+                <mat-icon fontIcon="edit"></mat-icon>
+              </button>
+              <button mat-icon-button
+                      (click)="deleteProduct(product.id)">
+                <mat-icon fontIcon="delete"></mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row
+              *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row
+              (click)="selectedProduct(row)"
+              *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

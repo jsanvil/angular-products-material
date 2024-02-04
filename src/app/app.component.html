@@ -1,66 +1,44 @@
-<mat-toolbar class="dark">
-  <!-- TITLE -->
-  <button mat-button
-          extended
-          aria-labelledby="Inicio"
-          routerLink="/welcome">
-    <mat-icon aria-hidden="false"
-              fontIcon="sell"></mat-icon>
-    <span>
-      {{title}}
-    </span>
-  </button>
-  <span class="spacer"></span>
-  <!-- HOME -->
-  <button mat-button
-          extended
-          aria-labelledby="Inicio"
-          routerLink="/welcome"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page">
-    <mat-icon aria-hidden="false"
-              fontIcon="home"></mat-icon>
-    Inicio
-  </button>
-  <!-- PRODUCTS -->
-  <button mat-button
-          extended
-          aria-labelledby="Productos"
-          routerLink="/products"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          [routerLinkActiveOptions]="{exact: true}">
-    <mat-icon aria-hidden="false"
-              fontIcon="list"></mat-icon>
-    Productos
-  </button>
-  <!-- USER PROFILE -->
-  @if(user) {
-  <button mat-button
-          extended
-          aria-labelledby="Perfil de usuario"
-          routerLink="/user/profile"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page">
-    <mat-icon aria-hidden="false"
-              fontIcon="person-circle"></mat-icon>
-    {{user || 'Perfil de usuario'}}
-  </button>
-  } @else {
-  <!-- LOGIN -->
-  <button mat-button
-          extended
-          aria-labelledby="Inicio de sesión"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          routerLink="/user/login">
-    <mat-icon aria-hidden="false"
-              fontIcon="login"></mat-icon>
-    Login
-  </button>
-  }
-</mat-toolbar>
+<div class="app-container vh-100 d-flex flex-column flex-grow-1"
+     [class.is-mobile]="isMobile">
 
-<div class="container p-3">
-  <router-outlet></router-outlet>
+  <app-toolbar class="mat-elevation-z6" [isMobile]="isMobile"
+               (onSideNavToggle)="sidenav.toggle()"></app-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <!-- [style.marginTop.px]="mobileQuery!.matches ? 56 : 0"> -->
+    <mat-sidenav #sidenav
+                 [mode]="isMobile ? 'over' : 'side'"
+                 [fixedInViewport]="isMobile"
+                 fixedTopGap="56">
+      <mat-nav-list>
+        <mat-list-item
+           routerLink="/welcome"
+           routerLinkActive="active-list-item"
+           aria-current="page">
+          <mat-icon aria-hidden="false"
+                    fontIcon="home"></mat-icon>
+          Inicio
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item
+           routerLink="/products"
+           routerLinkActive="active-list-item"
+           title="Productos">
+          <mat-icon aria-hidden="false"
+                    fontIcon="list"></mat-icon>
+          Productos
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <div class="route-container h-100 d-flex flex-column flex-fill flex-grow-1"
+           [@routeAnimations]="getRouteAnimationData()">
+        <router-outlet class="route-container flex-grow-0"></router-outlet>
+      </div>
+
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

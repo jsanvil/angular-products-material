@@ -1,15 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../interfaces/product';
+import { IProduct } from '../interfaces/product';
 
 @Pipe({
   name: 'productFilter',
   standalone: true
 })
 export class ProductFilterPipe implements PipeTransform {
-  transform(products: Product[], filterBy: string): Product[] {
+  transform(products: IProduct[], filterBy: string): IProduct[] {
     const filter = filterBy ? filterBy.toLocaleLowerCase() : null;
     if (filter) {
-      return products.filter((product: Product) =>
+      return products.filter((product: IProduct) =>
         product.description.toLocaleLowerCase().includes(filter));
     }
     return products;

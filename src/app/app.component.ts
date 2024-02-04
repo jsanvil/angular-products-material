@@ -1,50 +1,52 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {
-  RouterLink, RouterOutlet,
-  RouterLinkActive,
-  Router
-} from '@angular/router';
-import { LoginService } from './services/login.service';
-
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { Component, ViewChild } from '@angular/core';
+import { ChildrenOutletContexts, RouterLink, RouterOutlet } from '@angular/router';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FooterComponent } from './footer/footer.component';
+import { MatIconModule } from '@angular/material/icon';
+import { appRouteAnimations } from './route-animations/route-animatinos';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterOutlet,
     RouterLink,
-    RouterLinkActive,
-    // Material
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule
+    ToolbarComponent,
+    FooterComponent,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    RouterOutlet,
   ],
+  animations: [appRouteAnimations],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Angular Products';
-  user = '';
+  @ViewChild('sidenav') sidenav?: MatSidenav;
+  isMobile = false;
 
   constructor(
-    private router: Router,
-    private loginService: LoginService
+    private responsive: BreakpointObserver,
+    private contexts: ChildrenOutletContexts
   ) { }
 
   ngOnInit() {
-    this.user = this.loginService.getUserLogged();
+    // Ref: https://blog.angular-university.io/angular-responsive-design/
+    this.responsive.observe([
+      Breakpoints.XSmall,
+      Breakpoints.HandsetPortrait
+    ]).subscribe(isSmallScreen => {
+      this.isMobile = isSmallScreen.matches;
+      if (this.sidenav && !this.isMobile) {
+        this.sidenav.close();
+      }
+    });
   }
 
-  ngDoCheck() {
-    this.user = this.loginService.getUserLogged();
-  }
-
-  onUserLogin(user: string) {
-    this.user = user;
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 }

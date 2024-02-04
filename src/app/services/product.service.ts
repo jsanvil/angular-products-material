@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { Product } from '../interfaces/product';
-import { ResponseProducts } from '../interfaces/responses';
+import { IProduct } from '../interfaces/product';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -13,8 +12,8 @@ export class ProductService {
 
   // obtiene todos los productos
   // GET /products
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Array<Product>>(this.productsEndpoint).pipe(
+  getProducts(): Observable<IProduct[]> {
+    return this.http.get<Array<IProduct>>(this.productsEndpoint).pipe(
       catchError((resp: HttpErrorResponse) =>
         throwError(() =>
           new Error(`Error obteniendo) productos. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
@@ -23,8 +22,8 @@ export class ProductService {
 
   // obtiene un producto
   // GET /products/:id
-  getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.productsEndpoint}/${id}`).pipe(
+  getProduct(id: string): Observable<IProduct> {
+    return this.http.get<IProduct>(`${this.productsEndpoint}/${id}`).pipe(
       catchError((resp: HttpErrorResponse) =>
         throwError(() =>
           new Error(`Error obteniendo producto. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
@@ -33,8 +32,8 @@ export class ProductService {
 
   // agrega un producto
   // POST /products
-  addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.productsEndpoint, product).pipe(
+  addProduct(product: IProduct): Observable<IProduct> {
+    return this.http.post<IProduct>(this.productsEndpoint, product).pipe(
       catchError((resp: HttpErrorResponse) =>
         throwError(() =>
         new Error(`Error crear producto. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
@@ -43,8 +42,8 @@ export class ProductService {
 
   // actualiza un producto
   // PUT /products/:id
-  updateProduct(product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.productsEndpoint}/${product.id}`, product).pipe(
+  updateProduct(product: IProduct): Observable<IProduct> {
+    return this.http.put<IProduct>(`${this.productsEndpoint}/${product.id}`, product).pipe(
       catchError((resp: HttpErrorResponse) =>
         throwError(() =>
           new Error(`Error al actualizar producto. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
@@ -53,14 +52,14 @@ export class ProductService {
 
   // elimina un producto
   // DELETE /products/:id
-  deleteProduct(id: number): Observable<Product> {
-    return this.http.delete<Product>(`${this.productsEndpoint}/${id}`);
+  deleteProduct(id: string): Observable<IProduct> {
+    return this.http.delete<IProduct>(`${this.productsEndpoint}/${id}`);
   }
 
   // actualiza el rating de un producto
   // PATCH /products/:id { rating: number }
-  updateRating(id: number, rating: number): Observable<Product> {
-    return this.http.patch<Product>(`${this.productsEndpoint}/${id}`, { rating }).pipe(
+  updateRating(id: string, rating: number): Observable<IProduct> {
+    return this.http.patch<IProduct>(`${this.productsEndpoint}/${id}`, { rating }).pipe(
       catchError((resp: HttpErrorResponse) =>
         throwError(() =>
           new Error(`Error al actualizar rating. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))

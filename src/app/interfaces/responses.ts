@@ -1,6 +1,6 @@
-import { Product } from "./product";
+import { IProduct } from "./product";
 
 // represent an Array<Product>
 export interface ResponseProducts {
-  products: Product[];
+  products: IProduct[];
 }

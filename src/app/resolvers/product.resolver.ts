@@ -1,10 +1,10 @@
 import { ResolveFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { EMPTY, catchError } from 'rxjs';
-import { Product } from '../interfaces/product';
+import { IProduct } from '../interfaces/product';
 import { ProductService } from '../services/product.service';
 
-export const productResolver: ResolveFn<Product> = (route, state) => {
+export const productResolver: ResolveFn<IProduct> = (route, state) => {
   const router = inject(Router);
   const productsService = inject(ProductService);
 

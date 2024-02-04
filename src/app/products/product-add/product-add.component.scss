@@ -1,0 +1,20 @@
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #8883;
+  padding: 3px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 0;
+  // .img-button {
+  //   margin: 5px;
+  // }
+  .product-image {
+    max-width: 100%;
+    max-height: 100%;
+    // fit
+    object-fit: cover;
+    overflow: hidden;
+  }
+}
