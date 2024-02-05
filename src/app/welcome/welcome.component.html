@@ -1,5 +1,6 @@
 <div class="container mx-auto">
-  <mat-card class="mat-elevation-z8" [appearance]="'outlined'">
+  <mat-card class="mat-elevation-z8"
+            [appearance]="'outlined'">
     <mat-card-header>
       <mat-card-title>
         <h1><em>"AngularProducts"</em></h1>
@@ -7,9 +8,9 @@
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
-      <p>Aplicación <em>Angular (v17)</em> de ejemplo.</p>
-      <p>DAW - Desarrollo Web en Entorno Cliente</p>
-      <p>Curso 2023-2024</p>
+      <p i18n>Aplicación <em>Angular (v17)</em> de ejemplo.</p>
+      <p i18n>DAW - Desarrollo Web en Entorno Cliente</p>
+      <p i18n>Curso 2023-2024</p>
       <p>IES Serpis</p>
     </mat-card-content>
     <mat-divider></mat-divider>
@@ -17,19 +18,22 @@
       <button mat-button
               color="primary"
               [routerLink]="['/products']">
-        <mat-icon aria-hidden="false"
+        <mat-icon i18n
+                  aria-hidden="false"
                   fontIcon="list"></mat-icon>
         Productos
       </button>
       @if(user) {
-      <button mat-button
+      <button i18n
+              mat-button
               color="primary"
               [routerLink]="['/user/profile']">
         <i class="bi bi-person-circle"></i>
         Perfil de usuario
       </button>
       } @else {
-      <button mat-button
+      <button i18n
+              mat-button
               color="primary"
               [routerLink]="['/user/login']">
         <i class="bi bi-box-arrow-in-right"></i>

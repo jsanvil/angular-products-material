@@ -52,8 +52,8 @@ $light-theme: mat.define-light-theme(
 
 // Aplica el tema oscuro por defecto
 @include mat.all-component-themes($light-theme);
-@include mat.core-theme($light-theme);
-@include mat.button-theme($light-theme);
+// @include mat.core-theme($light-theme);
+// @include mat.button-theme($light-theme);
 
 // Aplica el tema claro solo cuando el usuario prefiera temas claros.
 @media (prefers-color-scheme: dark) {
@@ -63,13 +63,14 @@ $light-theme: mat.define-light-theme(
   @include mat.button-color($dark-theme);
 }
 
+.light-theme {
+  @include mat.all-component-colors($light-theme);
+}
+
 .dark-theme {
   @include mat.all-component-colors($dark-theme);
 }
 
-.light-theme {
-  @include mat.all-component-colors($light-theme);
-}
 
 // fix for mat-card elevation
 .mat-mdc-card.mat-elevation-z2 {

@@ -1,7 +1,9 @@
 <!-- <mat-toolbar class="dark"> -->
-<mat-toolbar color="primary" class="mat-elevation-z8">
+<mat-toolbar color="primary"
+             class="mat-elevation-z8">
   @if(isMobile) {
-  <button mat-raised-button color="accent"
+  <button mat-raised-button
+          color="accent"
           (click)="toggleSideNav()"><mat-icon>menu</mat-icon></button>
   }
   <!-- TITLE -->
@@ -18,7 +20,8 @@
   <span class="spacer"></span>
   @if(!isMobile) {
   <!-- HOME -->
-  <button mat-button
+  <button i18n
+          mat-button
           extended
           aria-labelledby="Inicio"
           routerLink="/welcome"
@@ -29,7 +32,8 @@
     Inicio
   </button>
   <!-- PRODUCTS -->
-  <button mat-button
+  <button i18n
+          mat-button
           extended
           aria-labelledby="Productos"
           routerLink="/products"

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es-ES" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="8564785487469012472" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;home&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Inicio </source>
+      </trans-unit>
+      <trans-unit id="841921746768097724" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;list&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Productos </source>
+      </trans-unit>
+      <trans-unit id="3385673891152264043" datatype="html">
+        <source>Aplicación <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>Angular (v17)<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/> de ejemplo.</source>
+      </trans-unit>
+      <trans-unit id="6993509247791115979" datatype="html">
+        <source>DAW - Desarrollo Web en Entorno Cliente</source>
+      </trans-unit>
+      <trans-unit id="1495597174676098009" datatype="html">
+        <source>Curso 2023-2024</source>
+      </trans-unit>
+      <trans-unit id="606984965414962040" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;bi bi-person-circle&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Perfil de usuario </source>
+      </trans-unit>
+      <trans-unit id="7271137125797073173" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;bi bi-box-arrow-in-right&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Login </source>
+      </trans-unit>
+      <trans-unit id="1878944583384618422" datatype="html">
+        <source>Cargando...</source>
+      </trans-unit>
+      <trans-unit id="6556021134924906686" datatype="html">
+        <source>Perfil de usuario</source>
+      </trans-unit>
+      <trans-unit id="7286391206771670951" datatype="html">
+        <source>👋 Hola <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ username }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+      </trans-unit>
+      <trans-unit id="7460840982682200570" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;logout&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Cerrar sesión </source>
+      </trans-unit>
+      <trans-unit id="920783504258662893" datatype="html">
+        <source>Welcome back!</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

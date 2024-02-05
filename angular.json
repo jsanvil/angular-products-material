@@ -4,10 +4,13 @@
   "newProjectRoot": "projects",
   "projects": {
     "angular-products": {
-      "i18n": {
-        "sourceLocale": "es-ES"
-      },
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "es-ES",
+        "locales": {
+          "en-US": "src/locale/messages.en.xlf"
+        }
+      },
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
@@ -23,6 +26,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": [
+              "en-US"
+            ],
             "outputPath": "dist/angular-products",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -37,8 +43,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -75,9 +81,14 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ng-extract-i18n-merge:ng-extract-i18n-merge",
           "options": {
-            "buildTarget": "angular-products:build"
+            "browserTarget": "angular-products:build",
+            "format": "xlf",
+            "outputPath": "src/locale",
+            "targetFiles": [
+              "messages.en.xlf"
+            ]
           }
         },
         "test": {
