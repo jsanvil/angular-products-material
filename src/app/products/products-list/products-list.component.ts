@@ -18,6 +18,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { LoginService } from '../../services/login.service';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-products-list',
@@ -39,22 +40,37 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatIconModule,
     MatRippleModule,
     MatSortModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss'
 })
 export class ProductsListComponent implements AfterViewInit {
   @ViewChild(MatSort, { static: false }) sort?: MatSort;
+  
+  isAdmin: boolean;
+  isLoading = true;
 
-  displayedColumns: string[] = ['image', 'description', 'price', 'available', 'rating'];
+  // Columnas a mostrar en la tabla
+  displayedColumns: string[] = ['image', 'description', 'price', 'available', 'rating', 'actions'];
+  
   dataSource?: MatTableDataSource<IProduct>;
+
   today = new Date();
+
+  // Ejemplo de internacionalización de las cabeceras de la tabla
+  table_headings = {
+    image: $localize`Imagen`,
+    description: $localize`Descripción`,
+    price: $localize`Precio`,
+    available: $localize`Disponible`,
+    rating: $localize`Valoración`
+  }
 
   protected showImage = true;
   protected filterSearch = '';
   protected products: IProduct[] = [];
-  isAdmin: boolean;
 
   constructor(
     private router: Router,
@@ -66,10 +82,11 @@ export class ProductsListComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.isLoading = true;
     this.productService.getProducts().subscribe({
       next: prods => {
         this.products = prods
-        // Funte de datos de la tabla
+        // Inicializa la fuente de datos de la tabla
         this.dataSource = new MatTableDataSource(this.products);
         // Filtro de la tabla para la columna "description"
         this.dataSource.filterPredicate = (data: IProduct, filter: string) => {
@@ -80,8 +97,11 @@ export class ProductsListComponent implements AfterViewInit {
           this.dataSource!.sort = this.sort!
         }, 0);
       },
-      error: err => console.error(err),
-      complete: () => console.log('Productos obtenidos')
+      error: err => {
+        this.isLoading = false
+        console.error(err)
+      },
+      complete: () => this.isLoading = false
     });
   }
 
@@ -94,7 +114,16 @@ export class ProductsListComponent implements AfterViewInit {
     this.router.navigate(['/products', product.id]);
   }
 
-  deleteProduct(product: IProduct): void {
+  editProduct(event: Event, product: IProduct): void {
+    event.stopPropagation();
+    event.preventDefault();
+    console.log('Edit product', product);
+    this.router.navigate(['/products', 'edit', product.id]);
+  }
+
+  deleteProduct(event: Event, product: IProduct): void {
+    event.stopPropagation();
+    event.preventDefault();
     if (confirm(`¿Está seguro de querer borrar el producto: ${product.description}?`)) {
       this.productService.deleteProduct(product.id!).subscribe({
         next: () => {

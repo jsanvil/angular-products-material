@@ -2,33 +2,42 @@
   <mat-card class="mat-elevation-z8">
     <mat-card-header>
       <mat-card-title>
-        <h4>Productos</h4>
+        <h4 i18n>Productos</h4>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field class="col-12">
         <mat-icon matPrefix
                   fontIcon="search"></mat-icon>
-        <mat-label>Buscar</mat-label>
+        <mat-label i18n>Buscar</mat-label>
         <input matInput
                (keyup)="applyFilter($event)"
                #input>
       </mat-form-field>
       @if (isAdmin) {
-        <div class="d-flex justify-content-end">
-            <button mat-raised-button
-                    color="accent"
-                    [routerLink]="['/products', 'add']">
-                    <mat-icon fontIcon="add"></mat-icon>
-                    Nuevo producto</button>
-        </div>
+      <div class="d-flex justify-content-end">
+        <button i18n
+                mat-raised-button
+                color="accent"
+                [routerLink]="['/products', 'add']">
+          <mat-icon fontIcon="add"></mat-icon>
+          Nuevo producto</button>
+      </div>
       <div class="table-container">
+        @if (isLoading) {
+        <div class="loading d-flex w-100 justify-content-center align-items-center gap-3">
+          <mat-spinner [diameter]="50"
+          [strokeWidth]="5"></mat-spinner>
+          <span i18n>Cargando productos...</span>
+        </div>
+        }
+        @else {
         <table mat-table
                [dataSource]="dataSource!"
                matSort>
           <ng-container matColumnDef="image">
             <th mat-header-cell
-                *matHeaderCellDef> Imagen </th>
+                *matHeaderCellDef> {{ table_headings.image }} </th>
             <td mat-cell
                 *matCellDef="let product">
               @if(product.imageUrl) {
@@ -45,7 +54,7 @@
           <ng-container matColumnDef="description">
             <th mat-header-cell
                 *matHeaderCellDef
-                mat-sort-header> Descripción </th>
+                mat-sort-header> {{ table_headings.description }} </th>
             <td mat-cell
                 *matCellDef="let product"> {{product.description}} </td>
           </ng-container>
@@ -59,7 +68,7 @@
           <ng-container matColumnDef="available">
             <th mat-header-cell
                 *matHeaderCellDef
-                mat-sort-header> Disponible </th>
+                mat-sort-header> {{ table_headings.available }} </th>
             <td mat-cell
                 *matCellDef="let product">
               {{product.available | date: 'dd/MM/yyyy'}}
@@ -82,11 +91,11 @@
             <td mat-cell
                 *matCellDef="let product">
               <button mat-icon-button
-                      [routerLink]="['/products', product.id]">
+                      (click)="editProduct($event, product)">
                 <mat-icon fontIcon="edit"></mat-icon>
               </button>
               <button mat-icon-button
-                      (click)="deleteProduct(product.id)">
+                      (click)="deleteProduct($event, product)">
                 <mat-icon fontIcon="delete"></mat-icon>
               </button>
             </td>
@@ -97,6 +106,7 @@
               (click)="selectedProduct(row)"
               *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        }
       </div>
       }
       @else {

@@ -2,13 +2,11 @@
 <mat-toolbar color="primary"
              class="mat-elevation-z8">
   @if(isMobile) {
-  <button mat-raised-button
-          color="accent"
+  <button mat-mini-fab
           (click)="toggleSideNav()"><mat-icon>menu</mat-icon></button>
   }
   <!-- TITLE -->
   <button mat-button
-          extended
           aria-labelledby="Inicio"
           routerLink="/welcome">
     <mat-icon aria-hidden="false"
@@ -22,7 +20,6 @@
   <!-- HOME -->
   <button i18n
           mat-button
-          extended
           aria-labelledby="Inicio"
           routerLink="/welcome"
           routerLinkActive="mat-elevation-z8 active"
@@ -34,7 +31,6 @@
   <!-- PRODUCTS -->
   <button i18n
           mat-button
-          extended
           aria-labelledby="Productos"
           routerLink="/products"
           routerLinkActive="mat-elevation-z8 active"
@@ -48,19 +44,17 @@
   <!-- USER PROFILE -->
   @if(user) {
   <button mat-button
-          extended
           aria-labelledby="Perfil de usuario"
           routerLink="/user/profile"
           routerLinkActive="mat-elevation-z8 active"
           ariaCurrentWhenActive="page">
     <mat-icon aria-hidden="false"
               fontIcon="person-circle"></mat-icon>
-    {{!isMobile ? user || 'Perfil de usuario' : ''}}
+    {{!isMobile ? user : ''}}
   </button>
   } @else {
   <!-- LOGIN -->
   <button mat-button
-          extended
           aria-labelledby="Inicio de sesión"
           routerLinkActive="mat-elevation-z8 active"
           ariaCurrentWhenActive="page"
