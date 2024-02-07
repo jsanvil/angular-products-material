@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public getUsers(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(this.usersEndpoint).pipe(
+    return this.http.get<IUser[]>(`this.usersEndpoint?_embed=image`).pipe(
       catchError((resp: HttpErrorResponse) =>
         throwError(() =>
           new Error(`Error obteniendo usuarios. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
@@ -20,7 +20,7 @@ export class UserService {
   }
 
   public getByUsername(username: string): Observable<IUser[]> {
-    return this.http.get<IUser[]>(`${this.usersEndpoint}?username=${username}`).pipe(
+    return this.http.get<IUser[]>(`${this.usersEndpoint}?username=${username}&_embed=image`).pipe(
       catchError((resp: HttpErrorResponse) =>
         throwError(() =>
           new Error(`Error obteniendo usuario. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))

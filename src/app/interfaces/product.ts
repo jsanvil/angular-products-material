@@ -1,14 +1,20 @@
+import { IImage } from "./image";
+
 export interface IProduct {
   id?: string;
+  name: string;
   description: string;
   price: number;
   available: string;
   imageUrl: string;
   rating: number;
+  imageId?: string;
+  image?: IImage;
 }
 
 export class Product implements IProduct {
   id?: string;
+  name: string = '';
   description: string = '';
   price: number = 0;
   available: string = '';

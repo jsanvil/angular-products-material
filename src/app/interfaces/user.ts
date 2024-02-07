@@ -1,3 +1,10 @@
+import { IImage } from "./image";
+
+export enum UserRole {
+  Admin = 'admin',
+  User = 'user'
+}
+
 export interface IUser {
   id?: string;
   username: string;
@@ -5,6 +12,7 @@ export interface IUser {
   firstName: string;
   lastName: string;
   role: string;
+  imageId?: string;
 }
 
 export class User implements IUser {
@@ -14,7 +22,9 @@ export class User implements IUser {
   email: string = '';
   firstName: string;
   lastName: string;
-  role: string = '';
+  role: UserRole = UserRole.User;
+  imageId?: string;
+  image?: IImage;
 
   constructor() {
     this.username = '';
@@ -22,7 +32,7 @@ export class User implements IUser {
     this.email = '';
     this.firstName = '';
     this.lastName = '';
-    this.role = '';
+    this.role = UserRole.User;
   }
 
   get fullName(): string {
@@ -36,11 +46,11 @@ export class User implements IUser {
   }
 
   isAdmin(): boolean {
-    return this.role === 'admin';
+    return this.role === UserRole.Admin;
   }
 
   isUser(): boolean {
-    return this.role === 'user';
+    return this.role === UserRole.User;
   }
 
 }

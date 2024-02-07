@@ -42,7 +42,7 @@ export class ProductsListComponent implements AfterViewInit {
   isLoading = true;
 
   // Columnas a mostrar en la tabla
-  displayedColumns: string[] = ['image', 'description', 'price', 'available', 'rating', 'actions'];
+  displayedColumns: string[] = ['image', 'name', 'price', 'available', 'rating', 'actions'];
   
   dataSource?: MatTableDataSource<IProduct>;
 
@@ -51,7 +51,7 @@ export class ProductsListComponent implements AfterViewInit {
   // Ejemplo de internacionalización de las cabeceras de la tabla
   table_headings = {
     image: $localize`Imagen`,
-    description: $localize`Descripción`,
+    name: $localize`Nombre`,
     price: $localize`Precio`,
     available: $localize`Disponible`,
     rating: $localize`Valoración`
@@ -77,9 +77,9 @@ export class ProductsListComponent implements AfterViewInit {
         this.products = prods
         // Inicializa la fuente de datos de la tabla
         this.dataSource = new MatTableDataSource(this.products);
-        // Filtro de la tabla para la columna "description"
+        // Filtro de la tabla para la columna "name"
         this.dataSource.filterPredicate = (data: IProduct, filter: string) => {
-          return data.description.toLowerCase().includes(filter);
+          return data.name.toLowerCase().includes(filter);
         }
         // Control de orden de las cabeceras de la tabla
         setTimeout(() => {
@@ -113,7 +113,7 @@ export class ProductsListComponent implements AfterViewInit {
   deleteProduct(event: Event, product: IProduct): void {
     event.stopPropagation();
     event.preventDefault();
-    if (confirm(`¿Está seguro de querer borrar el producto: ${product.description}?`)) {
+    if (confirm($localize`¿Está seguro de querer borrar el producto: ${product.name}?`)) {
       this.productService.deleteProduct(product.id!).subscribe({
         next: () => {
           this.products = this.products.filter(p => p.id !== product.id);

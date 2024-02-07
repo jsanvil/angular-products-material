@@ -1,0 +1,10 @@
+@if(image && image.url) {
+<img class="img-thumbnail mat-elevation-z6"
+     [src]="image.url"
+     [alt]="name"
+     [ariaLabel]="name"
+     [width]="size">
+}
+@else {
+<mat-icon fontIcon="image"></mat-icon>
+}

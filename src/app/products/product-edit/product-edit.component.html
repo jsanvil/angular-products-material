@@ -1,4 +1,155 @@
-<div class="container  p-3 mx-auto">
+<div class="container p-3 mx-auto">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>
+        <h4>Editando producto: {{ product.name }}</h4>
+      </mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="productForm"
+          (ngSubmit)="onSubmit()"
+          novalidate>
+      <mat-card-content>
+
+        <!-- NOMBRE -->
+        <div class="mb-3 row">
+          <mat-form-field hintLabel="de 5 a 60 caracteres"
+                          class="col-md-12">
+            <mat-icon matPrefix
+                      fontIcon="sell"></mat-icon>
+            <mat-label i18n>Nombre</mat-label>
+            <input matInput
+                   type="text"
+                   name="name"
+                   id="name"
+                   required
+                   minlength="5"
+                   maxlength="60"
+                   autofocus
+                   formControlName="name"
+                   #nameInput
+                   aria-describedby="nameHelp">
+            <mat-hint align="end">
+              <em>{{nameInput.value.length}}/60</em>
+            </mat-hint>
+            <mat-error>
+              <em>El nombre debe tener entre 5 y 60 caracteres ({{nameInput.value.length}}/60)</em>
+            </mat-error>
+            <mat-icon matSuffix
+                      *ngIf="name?.invalid"
+                      fontIcon="error_outline"></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="mb-3 row">
+          <mat-form-field hintLabel="de 5 a 60 caracteres"
+                          class="col-md-12">
+            <mat-icon matPrefix
+                      fontIcon="sell"></mat-icon>
+            <mat-label i18n>Descripción</mat-label>
+            <textarea matInput
+                      name="description"
+                      id="description"
+                      maxlength="200"
+                      formControlName="description"
+                      #descriptionInput
+                      aria-describedby="descriptionHelp"></textarea>
+            <mat-hint align="end">
+              <em>{{descriptionInput.value.length}}/200</em>
+            </mat-hint>
+            <mat-icon matSuffix
+                      *ngIf="description?.invalid"
+                      fontIcon="error_outline"></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- PRECIO -->
+        <div class="mb-3 row">
+          <mat-form-field class="col-md-6">
+            <mat-icon matPrefix
+                      fontIcon="euro"></mat-icon>
+            <mat-label>Precio</mat-label>
+            <input matInput
+                   type="number"
+                   name="price"
+                   id="price"
+                   required
+                   min="0"
+                   step="0.01"
+                   formControlName="price"
+                   #priceInput
+                   aria-describedby="priceHelp">
+            <mat-error>
+              <em>El precio debe ser mayor que 0</em>
+            </mat-error>
+            <mat-icon matSuffix
+                      *ngIf="price?.invalid"
+                      fontIcon="error_outline"></mat-icon>
+          </mat-form-field>
+
+          <!-- DISPONIBILIDAD -->
+
+          <mat-form-field class="col-md-6">
+            <mat-icon matPrefix
+                      fontIcon="date_range"></mat-icon>
+            <mat-label>Disponible</mat-label>
+            <input matInput
+                   [matDatepicker]="picker"
+                   name="available"
+                   id="available"
+                   formControlName="available"
+                   #availableInput
+                   aria-describedby="availableHelp">
+            <mat-datepicker-toggle matSuffix
+                                   [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-icon matSuffix
+                      *ngIf="available?.invalid"
+                      fontIcon="error_outline"></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- IMAGEN -->
+
+        <div class="mb-3 row img-container">
+          <input type="file"
+                 hidden
+                 class="form-control"
+                 name="image"
+                 id="image"
+                 #fileImage
+                 (change)="changeImage(fileImage)">
+          <button mat-stroked-button
+                  class="img-button"
+                  type="button"
+                  color="primary"
+                  (click)="fileImage.click()">
+            <mat-icon fontIcon="image"></mat-icon>
+            Seleccionar imagen
+          </button>
+          @if(product.image!.url) {
+          <img [src]="product.image!.url"
+               [alt]="product.name"
+               class="product-image">
+          }
+        </div>
+      </mat-card-content>
+      <mat-card-actions [align]="'end'">
+        <button mat-raised-button
+                type="submit"
+                color="accent"
+                [disabled]="productForm.invalid">
+          <mat-icon fontIcon="save"></mat-icon>
+          Guardar cambios
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+
+
+<!-- <div class="container  p-3 mx-auto">
   <div class="card">
     <div class="card-header bg-success text-white">
       Editar producto
@@ -90,4 +241,4 @@
       }
     </div>
   </div>
-</div>
+</div> -->

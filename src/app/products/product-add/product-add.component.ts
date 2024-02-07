@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { convertImageFromInput } from '../../image/imagetool';
 
 @Component({
   selector: 'app-product-add',
@@ -32,11 +33,16 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 })
 export class ProductAddComponent implements ComponentDeactivate {
   productForm = new FormGroup({
-    description: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]),
+    name: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]),
+    description: new FormControl(''),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
     available: new FormControl(''),
     imageUrl: new FormControl('')
   });
+
+  get name() {
+    return this.productForm.get('name');
+  }
 
   get description() {
     return this.productForm.get('description');
@@ -64,11 +70,14 @@ export class ProductAddComponent implements ComponentDeactivate {
   ) { }
 
   canDeactivate() {
-    return confirm('¿Quiere abandonar la página?. Los cambios no se guardarán.');
+    if (this.productForm!.dirty)
+      return confirm($localize`¿Quiere abandonar la página?. Los cambios no se guardarán.`);
+    return true;
   }
 
   onSubmit() {
     if (this.product && this.productForm!.valid) {
+      this.product.name = this.name!.value!;
       this.product.description = this.description!.value!;
       this.product.price = Number(this.price!.value!);
       this.product.available = this.available!.value!;
@@ -93,11 +102,8 @@ export class ProductAddComponent implements ComponentDeactivate {
 
   changeImage(fileInput: HTMLInputElement) {
     if (!this.product) { return; }
-    if (!fileInput.files || fileInput.files.length === 0) return;
-    const reader: FileReader = new FileReader();
-    reader.readAsDataURL(fileInput.files[0]);
-    reader.addEventListener('loadend', e => {
-      this.product!.imageUrl = reader.result as string;
+    convertImageFromInput(fileInput, 200, 200).then((data: string) => {
+      this.product!.imageUrl = data;
     });
   }
 }

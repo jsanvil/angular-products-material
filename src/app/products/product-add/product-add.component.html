@@ -9,41 +9,62 @@
           (ngSubmit)="onSubmit()"
           novalidate>
       <mat-card-content>
+
+        <!-- NOMBRE -->
         <div class="mb-3 row">
-
-          <!-- DESCRIPCIÓN -->
-
           <mat-form-field hintLabel="de 5 a 60 caracteres"
                           class="col-md-12">
             <mat-icon matPrefix
                       fontIcon="sell"></mat-icon>
-            <mat-label>Nombre</mat-label>
+            <mat-label i18n>Nombre</mat-label>
             <input matInput
                    type="text"
-                   name="description"
-                   id="description"
+                   name="name"
+                   id="name"
                    required
                    minlength="5"
                    maxlength="60"
                    autofocus
-                   formControlName="description"
-                   #descriptionInput
-                   aria-describedby="descriptionHelp">
+                   formControlName="name"
+                   #nameInput
+                   aria-describedby="nameHelp">
             <mat-hint align="end">
-              <em>{{descriptionInput.value.length}}/60</em>
+              <em>{{nameInput.value.length}}/60</em>
             </mat-hint>
             <mat-error>
-              <em>El nombre debe tener entre 5 y 60 caracteres ({{descriptionInput.value.length}}/60)</em>
+              <em>El nombre debe tener entre 5 y 60 caracteres ({{nameInput.value.length}}/60)</em>
             </mat-error>
+            <mat-icon matSuffix
+                      *ngIf="name?.invalid"
+                      fontIcon="error_outline"></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="mb-3 row">
+          <mat-form-field hintLabel="de 5 a 60 caracteres"
+                          class="col-md-12">
+            <mat-icon matPrefix
+                      fontIcon="sell"></mat-icon>
+            <mat-label i18n>Descripción</mat-label>
+            <textarea matInput
+                      name="description"
+                      id="description"
+                      maxlength="200"
+                      formControlName="description"
+                      #descriptionInput
+                      aria-describedby="descriptionHelp"></textarea>
+            <mat-hint align="end">
+              <em>{{descriptionInput.value.length}}/200</em>
+            </mat-hint>
             <mat-icon matSuffix
                       *ngIf="description?.invalid"
                       fontIcon="error_outline"></mat-icon>
           </mat-form-field>
         </div>
+        
+        <!-- PRECIO -->
         <div class="mb-3 row">
-
-          <!-- PRECIO -->
-
           <mat-form-field class="col-md-6">
             <mat-icon matPrefix
                       fontIcon="euro"></mat-icon>
@@ -112,35 +133,6 @@
                class="product-image">
           }
         </div>
-
-        <!--
-        <div class="mb-3 row">
-          <label for="image"
-                 class="col-md-2 col-form-label text-md-end">Imagen</label>
-          <div class="col-md-10">
-            <input type="file"
-                   class="form-control"
-                   name="image"
-                   id="image"
-                   #fileImage
-                   (change)="changeImage(fileImage)">
-          </div>
-        </div>
-        @if(product.imageUrl) {
-        <img [src]="product.imageUrl"
-             alt=""
-             class="product-image">
-        } -->
-
-        <!-- <div class="mb-3 row">
-        <div class="offset-md-2 col-md-10">
-          <button type="submit"
-                  class="btn btn-success"
-                  [disabled]="productForm.invalid">
-            Guardar cambios
-          </button>
-        </div>
-      </div> -->
       </mat-card-content>
       <mat-card-actions [align]="'end'">
         <button mat-raised-button

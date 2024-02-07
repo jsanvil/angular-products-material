@@ -23,7 +23,7 @@ export class ProductService {
   // obtiene un producto
   // GET /products/:id
   getProduct(id: string): Observable<IProduct> {
-    return this.http.get<IProduct>(`${this.productsEndpoint}/${id}`).pipe(
+    return this.http.get<IProduct>(`${this.productsEndpoint}/${id}?_embed=image`).pipe(
       catchError((resp: HttpErrorResponse) =>
         throwError(() =>
           new Error(`Error obteniendo producto. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
