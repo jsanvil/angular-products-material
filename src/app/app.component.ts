@@ -7,6 +7,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { appRouteAnimations } from './route-animations/route-animatinos';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotifierService } from './services/notifier.service';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +32,9 @@ export class AppComponent {
 
   constructor(
     private responsive: BreakpointObserver,
-    private contexts: ChildrenOutletContexts
+    private contexts: ChildrenOutletContexts,
+    private notifier: NotifierService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -43,6 +47,13 @@ export class AppComponent {
       if (this.sidenav && !this.isMobile) {
         this.sidenav.close();
       }
+    });
+
+    this.notifier.messages.subscribe(message => {
+      console.log('message', message);
+      this.snackBar.open(message.message, 'OK', {
+        duration: 5000,
+      });
     });
   }
 

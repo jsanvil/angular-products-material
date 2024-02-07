@@ -1,24 +1,19 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { IProduct } from '../../interfaces/product';
-import { ProductFilterPipe } from '../../pipes/product-filter.pipe';
-import { ProductService } from '../../services/product.service';
-import { HttpClientModule } from '@angular/common/http';
+import { Router, RouterLink } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { HighlightDirective } from '../../directives/highlight.directive';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatRippleModule } from '@angular/material/core';
-import { Router, RouterLink } from '@angular/router';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { LoginService } from '../../services/login.service';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { IProduct } from '../../interfaces/product';
+import { ProductService } from '../../services/product.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-products-list',
@@ -26,22 +21,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   imports: [
     CommonModule,
     RouterLink,
-    HttpClientModule,
-    ProductFilterPipe,
-    HighlightDirective,
     ReactiveFormsModule,
     // Material
-    MatTableModule,
-    MatCardModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatRippleModule,
-    MatSortModule,
-    MatGridListModule,
-    MatProgressSpinnerModule
   ],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss'
@@ -75,7 +64,7 @@ export class ProductsListComponent implements AfterViewInit {
   constructor(
     private router: Router,
     private productService: ProductService,
-    private loginService: LoginService,
+    private loginService: UserService,
     protected title: Title
   ) {
     this.isAdmin = this.loginService.isAdmin();

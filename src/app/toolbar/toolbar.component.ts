@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service';
 import { ThemeService } from '../services/theme.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class ToolbarComponent {
   }
 
   constructor(
-    private loginService: LoginService,
+    private loginService: UserService,
     private themeService: ThemeService
   ) {
     this.isDarkMode = this.themeService.isDarkMode();

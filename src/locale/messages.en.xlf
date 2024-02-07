@@ -4,11 +4,11 @@
     <body>
       <trans-unit id="8564785487469012472" datatype="html">
         <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;home&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Inicio </source>
-        <target>Home</target>
+        <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;home&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Home </target>
       </trans-unit>
       <trans-unit id="841921746768097724" datatype="html">
         <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;list&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Productos </source>
-        <target>Products</target>
+        <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;list&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Products </target>
       </trans-unit>
       <trans-unit id="3385673891152264043" datatype="html">
         <source>Aplicación <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>Angular (v17)<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/> de ejemplo.</source>
@@ -28,7 +28,6 @@
       </trans-unit>
       <trans-unit id="7271137125797073173" datatype="html">
         <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;bi bi-box-arrow-in-right&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Login </source>
-        <target>Login</target>
       </trans-unit>
       <trans-unit id="6556021134924906686" datatype="html">
         <source>Perfil de usuario</source>
@@ -44,11 +43,83 @@
       </trans-unit>
       <trans-unit id="7460840982682200570" datatype="html">
         <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;logout&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Cerrar sesión </source>
-        <target>Logout</target>
+        <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;logout&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Logout </target>
       </trans-unit>
       <trans-unit id="1878944583384618422" datatype="html">
         <source>Cargando...</source>
         <target state="new">Loading...</target>
+      </trans-unit>
+      <trans-unit id="1815920507891249355" datatype="html">
+        <source>Productos</source>
+        <target state="new">Products</target>
+      </trans-unit>
+      <trans-unit id="8713073708350341933" datatype="html">
+        <source>Buscar</source>
+        <target state="new">Search</target>
+      </trans-unit>
+      <trans-unit id="6331353003267953298" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon fontIcon=&quot;add&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Nuevo producto</source>
+        <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon fontIcon=&quot;add&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> New product</target>
+      </trans-unit>
+      <trans-unit id="7363992291269808571" datatype="html">
+        <source>Cargando productos...</source>
+        <target state="new">Loading produts...</target>
+      </trans-unit>
+      <trans-unit id="7937626225231657725" datatype="html">
+        <source>Imagen</source>
+        <target state="new">Image</target>
+      </trans-unit>
+      <trans-unit id="2702769239797460498" datatype="html">
+        <source>Descripción</source>
+        <target state="new">Description</target>
+      </trans-unit>
+      <trans-unit id="2090485092107532642" datatype="html">
+        <source>Precio</source>
+        <target state="new">Price</target>
+      </trans-unit>
+      <trans-unit id="9067456695925284781" datatype="html">
+        <source>Disponible</source>
+        <target state="new">Available</target>
+      </trans-unit>
+      <trans-unit id="8456637101024426710" datatype="html">
+        <source>Valoración</source>
+        <target state="new">Rating</target>
+      </trans-unit>
+      <trans-unit id="4738728437597991510" datatype="html">
+        <source>El usuario y la contraseña son requeridos</source>
+        <target state="new">Username and password are required</target>
+      </trans-unit>
+      <trans-unit id="2987863536445160377" datatype="html">
+        <source>El usuario o la contraseña son incorrectos</source>
+        <target state="new">Username or password are incorrect</target>
+      </trans-unit>
+      <trans-unit id="2425823832164539467" datatype="html">
+        <source>Inicio de sesión</source>
+        <target state="new">Login</target>
+      </trans-unit>
+      <trans-unit id="1238896602170131097" datatype="html">
+        <source>Introduzca sus credenciales de acceso</source>
+        <target state="new">Enter your access credentials</target>
+      </trans-unit>
+      <trans-unit id="1061159097351857929" datatype="html">
+        <source>El <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>nombre de usuario<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> es necesario</source>
+        <target state="new"><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Username<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> is required</target>
+      </trans-unit>
+      <trans-unit id="8171175188406120829" datatype="html">
+        <source>El <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>nombre de usuario<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> debe tener al menos <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>4 caracteres<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target state="new"><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Username<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> must by at least <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>4 characters<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+      </trans-unit>
+      <trans-unit id="7882374625463997387" datatype="html">
+        <source>Se requiere <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>contraseña<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target state="new">Se requiere <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>contraseña<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+      </trans-unit>
+      <trans-unit id="2625056339623736048" datatype="html">
+        <source>La <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>contraseña<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> debe tener al menos <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>4 caracteres<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target state="new"><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Password<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> must be at least <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>4 characters<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+      </trans-unit>
+      <trans-unit id="9193164575442860262" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;login&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Entrar </source>
+        <target state="new"><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;login&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Login </target>
       </trans-unit>
     </body>
   </file>

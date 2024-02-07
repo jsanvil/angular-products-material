@@ -1,78 +1,80 @@
 <div class="container mx-auto">
-       <mat-card class="mat-elevation-z8">
-              <!-- LOGIN FORM -->
-              <mat-card-header>
-                     <mat-card-title>
-                            <h1>Inicio de sesión</h1>
-                     </mat-card-title>
-              </mat-card-header>
-              <mat-card-content>
-                     <p>Introduzca sus credenciales de acceso</p>
-                     <form [formGroup]="loginForm"
-                           (ngSubmit)="onSubmit()"
-                           novalidate>
-                            <!-- USERNAME -->
-                            <div class="mb-3">
-                                   <mat-form-field class="w-100">
-                                          <mat-icon matPrefix
-                                                    fontIcon="account_circle"></mat-icon>
-                                          <mat-label>Usuario</mat-label>
-                                          <input matInput
-                                                 type="text"
-                                                 name="userName"
-                                                 id="userName"
-                                                 required
-                                                 minlength="4"
-                                                 autofocus
-                                                 formControlName="userName"
-                                                 #userNameInput
-                                                 aria-describedby="userNameHelp" />
-                                          <mat-hint>Introduce un nombre de usuario</mat-hint>
-                                          @if (userName?.errors?.['required']) {
-                                          <mat-error>El <strong>nombre de usuario</strong> es necesario</mat-error>
-                                          }
-                                          @if (userName?.errors?.['minlength']) {
-                                          <mat-error>El <strong>nombre de usuario</strong> debe tener al menos <strong>4
-                                                        caracteres</strong></mat-error>
-                                          }
-                                   </mat-form-field>
-                            </div>
-                            <!-- PASSWORD -->
-                            <div class="mb-3">
-                                   <mat-form-field class="w-100">
-                                          <mat-icon matPrefix
-                                                    fontIcon="key"></mat-icon>
-                                          <mat-label>Contraseña</mat-label>
-                                          <input matInput
-                                                 type="password"
-                                                 name="userPassword"
-                                                 id="userPassword"
-                                                 required
-                                                 minlength="4"
-                                                 formControlName="userPassword"
-                                                 #userPasswordInput
-                                                 aria-describedby="userPasswordHelp" />
-                                          @if (userPassword?.errors?.['required']) {
-                                          <mat-error>Se requiere <strong>contraseña</strong></mat-error>
-                                          }
-                                          @if (userPassword?.errors?.['minlength']) {
-                                          <mat-error>La <strong>contraseña</strong> debe tener al menos <strong>4
-                                                        caracteres</strong></mat-error>
-                                          }
-                                   </mat-form-field>
-                            </div>
+  <mat-card class="mat-elevation-z8">
+    <!-- LOGIN FORM -->
+    <mat-card-header>
+      <mat-card-title>
+        <h4 i18n>Inicio de sesión</h4>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p i18n>Introduzca sus credenciales de acceso</p>
+      <form [formGroup]="loginForm"
+            (ngSubmit)="onSubmit()"
+            novalidate>
+        <!-- USERNAME -->
+        <div class="mb-3">
+          <mat-form-field class="w-100">
+            <mat-icon matPrefix
+                      fontIcon="account_circle"></mat-icon>
+            <mat-label>Usuario</mat-label>
+            <input matInput
+                   type="text"
+                   name="userName"
+                   id="userName"
+                   required
+                   minlength="4"
+                   autofocus
+                   formControlName="userName"
+                   #userNameInput
+                   aria-describedby="userNameHelp" />
+            <mat-hint>Introduce un nombre de usuario</mat-hint>
+            @if (userName?.errors?.['required']) {
+            <mat-error i18n>El <strong>nombre de usuario</strong> es necesario</mat-error>
+            }
+            @if (userName?.errors?.['minlength']) {
+            <mat-error i18n>El <strong>nombre de usuario</strong> debe tener al menos
+              <strong>4
+                caracteres</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- PASSWORD -->
+        <div class="mb-3">
+          <mat-form-field class="w-100">
+            <mat-icon matPrefix
+                      fontIcon="key"></mat-icon>
+            <mat-label>Contraseña</mat-label>
+            <input matInput
+                   type="password"
+                   name="userPassword"
+                   id="userPassword"
+                   required
+                   minlength="4"
+                   formControlName="userPassword"
+                   #userPasswordInput
+                   aria-describedby="userPasswordHelp" />
+            @if (userPassword?.errors?.['required']) {
+            <mat-error i18n>Se requiere <strong>contraseña</strong></mat-error>
+            }
+            @if (userPassword?.errors?.['minlength']) {
+            <mat-error i18n>La <strong>contraseña</strong> debe tener al menos <strong>4
+                caracteres</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
 
-                            <div class="text-end">
-                                   <button mat-raised-button
-                                           color="primary"
-                                           [disabled]="!loginForm.valid"
-                                           type="submit">
-                                          <mat-icon aria-hidden="false"
-                                                    fontIcon="login"></mat-icon>
-                                          Entrar
-                                   </button>
-                            </div>
-                     </form>
-              </mat-card-content>
-       </mat-card>
+        <div class="text-end">
+          <button i18n
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!loginForm.valid"
+                  type="submit">
+            <mat-icon aria-hidden="false"
+                      fontIcon="login"></mat-icon>
+            Entrar
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

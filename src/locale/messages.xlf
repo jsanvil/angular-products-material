@@ -38,6 +38,60 @@
       <trans-unit id="920783504258662893" datatype="html">
         <source>Welcome back!</source>
       </trans-unit>
+      <trans-unit id="1815920507891249355" datatype="html">
+        <source>Productos</source>
+      </trans-unit>
+      <trans-unit id="2090485092107532642" datatype="html">
+        <source>Precio</source>
+      </trans-unit>
+      <trans-unit id="2702769239797460498" datatype="html">
+        <source>Descripción</source>
+      </trans-unit>
+      <trans-unit id="6331353003267953298" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon fontIcon=&quot;add&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Nuevo producto</source>
+      </trans-unit>
+      <trans-unit id="7363992291269808571" datatype="html">
+        <source>Cargando productos...</source>
+      </trans-unit>
+      <trans-unit id="7937626225231657725" datatype="html">
+        <source>Imagen</source>
+      </trans-unit>
+      <trans-unit id="8456637101024426710" datatype="html">
+        <source>Valoración</source>
+      </trans-unit>
+      <trans-unit id="8713073708350341933" datatype="html">
+        <source>Buscar</source>
+      </trans-unit>
+      <trans-unit id="9067456695925284781" datatype="html">
+        <source>Disponible</source>
+      </trans-unit>
+      <trans-unit id="1061159097351857929" datatype="html">
+        <source>El <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>nombre de usuario<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> es necesario</source>
+      </trans-unit>
+      <trans-unit id="1238896602170131097" datatype="html">
+        <source>Introduzca sus credenciales de acceso</source>
+      </trans-unit>
+      <trans-unit id="2425823832164539467" datatype="html">
+        <source>Inicio de sesión</source>
+      </trans-unit>
+      <trans-unit id="2625056339623736048" datatype="html">
+        <source>La <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>contraseña<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> debe tener al menos <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>4 caracteres<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+      </trans-unit>
+      <trans-unit id="2987863536445160377" datatype="html">
+        <source>El usuario o la contraseña son incorrectos</source>
+      </trans-unit>
+      <trans-unit id="4738728437597991510" datatype="html">
+        <source>El usuario y la contraseña son requeridos</source>
+      </trans-unit>
+      <trans-unit id="7882374625463997387" datatype="html">
+        <source>Se requiere <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>contraseña<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+      </trans-unit>
+      <trans-unit id="8171175188406120829" datatype="html">
+        <source>El <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>nombre de usuario<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> debe tener al menos <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>4 caracteres<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+      </trans-unit>
+      <trans-unit id="9193164575442860262" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon aria-hidden=&quot;false&quot; fontIcon=&quot;login&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Entrar </source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

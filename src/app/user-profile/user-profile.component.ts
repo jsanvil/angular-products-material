@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,21 +23,20 @@ export class UserProfileComponent {
 
   constructor(
     private router: Router,
-    private loginService: LoginService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
-    if (!this.loginService.isLogged()) {
+    if (!this.userService.isLogged()) {
       this.router.navigate(['/user/login']);
     }
 
-    this.username = this.loginService.getUserLogged();
+    this.username = this.userService.getFullName();
   }
 
   logout(event: Event) {
     event.preventDefault();
-    this.loginService.logout();
-    this.username = '';
+    this.userService.logout();
     this.router.navigate(['/user/login']);
   }
 }

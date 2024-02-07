@@ -7,7 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service';
+import { NotifierService } from '../services/notifier.service';
 
 @Component({
   selector: 'app-user-login',
@@ -35,7 +36,8 @@ export class UserLoginComponent {
 
   constructor(
     private router: Router,
-    private loginService: LoginService
+    private loginService: UserService,
+    private notifier: NotifierService
   ) { }
 
   ngAfterViewInit() {
@@ -62,11 +64,12 @@ export class UserLoginComponent {
           this.router.navigate(['/user/profile']);
         }
         else {
+          this.notifier.showError('Usuario o contraseña incorrectos');
           this.userName?.setErrors({ invalid: true });
           this.userPassword?.setErrors({ invalid: true });
         }
       },
-      error: err => console.error(err),
+      error: err => this.notifier.showError(err.message)
     });
   }
 

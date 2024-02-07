@@ -5,6 +5,7 @@ import { IProduct } from '../../interfaces/product';
 import { CommonModule } from '@angular/common';
 import { StarRatingComponent } from '../../products/star-rating/star-rating.component';
 import { Title } from '@angular/platform-browser';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -23,7 +24,8 @@ export class ProductDetailComponent {
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
-    private productService: ProductService
+    private productService: ProductService,
+    private loginService: UserService
   ) { }
 
   ngOnInit() {

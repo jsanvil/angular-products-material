@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
-import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service';
 import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
@@ -26,7 +26,7 @@ export class WelcomeComponent {
 
   constructor(
     private title: Title,
-    private loginService: LoginService) { }
+    private loginService: UserService) { }
   
   ngOnInit() {
     this.title.setTitle('Inicio');
